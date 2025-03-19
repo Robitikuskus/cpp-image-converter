@@ -110,6 +110,10 @@ Image LoadBMP(const Path& file) {
         in.read(padding.data(), padding.size());
     }
 
+    if (image.GetWidth() != width || image.GetHeight() != height) {
+        return {};
+    }
+
     return in.good() ? image : Image();
 }
 
