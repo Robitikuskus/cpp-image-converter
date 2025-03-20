@@ -94,6 +94,9 @@ Image LoadBMP(const Path& file) {
     int stride = GetBMPStride(width);
 
     Image image(width, height, Color::Black());
+    if (width <= 0 || height <= 0)
+        return {};
+    
     vector<char> padding(stride - width * 3);
 
     for (int y = height - 1; y >= 0; --y) {
